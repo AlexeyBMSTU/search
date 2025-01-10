@@ -1,5 +1,5 @@
 body {
-  font-family: 'Arial', sans-serif;
+  // font-family: 'Arial', sans-serif;
   background-color: #f5f7fa;
   margin: 0;
   padding: 0;
@@ -10,9 +10,14 @@ body {
   position: relative;
   width: 100vw;
   height: 100vh;
-  // font-family: 'PT Sans', sans-serif;
+  font-family: 'PTS', sans-serif;
 }
-
+@font-face {
+  font-family: 'PTS';
+  src: url('@/static/fonts/PTSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 #root {
   height: 100%;
   width: 100%;

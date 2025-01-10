@@ -106,6 +106,9 @@
   margin-top: 20px;
   scrollbar-width: none;
 }
+.events.mobile {
+  gap: 40px;
+}
 .events.desktop {
   gap: 80px;
   margin-right: 80px;
@@ -132,7 +135,7 @@
     margin-left: 20px;
   }
   .event {
-    width: 80%;
+    width: 260px;
     margin-bottom: 20px;
   }
 }
