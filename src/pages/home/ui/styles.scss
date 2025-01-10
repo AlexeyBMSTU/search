@@ -104,6 +104,7 @@
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
+  scrollbar-width: none;
 }
 .events.desktop {
   gap: 80px;
@@ -129,10 +130,6 @@
 @media (max-width: 768px) {
   .container {
     margin-left: 20px;
-  }
-  .events {
-    overflow-x: auto;
-    scrollbar-width: none;
   }
   .event {
     width: 80%;
@@ -189,7 +186,6 @@
   justify-content: center;
   align-items: center;
   color: var(--mobile-color);
-  /* border: 2px solid #3877EE; */
   font-weight: bold;
 }
 .event__prev-button {
@@ -201,12 +197,16 @@
 .next-button,
 .prev-button {
   background-size: cover;
-  height: 100% width 100%;
   border-radius: 50%;
+}
+.prev-button {
+  transform: rotate(-180deg);
 }
 .interactive-info {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: row;
   align-items: center;
+  overflow-x: auto;
+  width: 95%;
 }

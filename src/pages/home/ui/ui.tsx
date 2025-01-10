@@ -87,7 +87,10 @@ const DesktopHome = () => {
         <Navigation />
         <div className='interactive-info'>
           <div className='event__prev-button'>
-            <img className='prev-button' src=''></img>
+            <img
+              className='prev-button'
+              src='https://github.com/AlexeyBMSTU/search/blob/UX/src/static/photos/next-button.jpg?raw=true'
+            ></img>
           </div>
           <div className='events desktop'>
             <div className='event desktop'>
@@ -111,9 +114,33 @@ const DesktopHome = () => {
                 электрический грузовик Tesla Semi
               </p>
             </div>
+            <div className='event desktop'>
+              <h3>2018</h3>
+              <p>
+                Компания Tesla официально представила первый в мире
+                электрический грузовик Tesla Semi
+              </p>
+            </div>
+            <div className='event desktop'>
+              <h3>2019</h3>
+              <p>
+                Компания Tesla официально представила первый в мире
+                электрический грузовик Tesla Semi
+              </p>
+            </div>
+            <div className='event desktop'>
+              <h3>2020</h3>
+              <p>
+                Компания Tesla официально представила первый в мире
+                электрический грузовик Tesla Semi
+              </p>
+            </div>
           </div>
           <div className='event__next-button'>
-            <img className='next-button'></img>
+            <img
+              className='next-button'
+              src='https://github.com/AlexeyBMSTU/search/blob/UX/src/static/photos/next-button.jpg?raw=true'
+            ></img>
           </div>
         </div>
       </div>

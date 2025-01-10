@@ -4,7 +4,7 @@ import './styles.scss';
 const Item = () => {
   return (
     <div className='item'>
-      <div className='item-container'></div>
+      <div className='active item-container'></div>
       <div className='item-title'>Ноябрь</div>
     </div>
   );
