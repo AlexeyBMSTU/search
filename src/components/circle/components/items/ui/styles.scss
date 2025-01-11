@@ -7,6 +7,8 @@
   justify-content: space-between;
   align-items: center;
   transform-origin: center center;
+  color: var(--item-active-text-color);
+  font-weight: 700;
 }
 
 /* Позиционирование элементов на окружности */
@@ -42,8 +44,6 @@
   transform-origin: center;
 }
 .item-container:hover {
-  // cursor: pointer;
-  // scale: 1.5;
   display: flex;
   width: 56px;
   height: 56px;
@@ -57,9 +57,8 @@
 .item-title {
   position: absolute;
   margin-left: 76px;
-  font-weight: 700;
-  color: var(--item-active-text-color);
   transition: opacity var(--time) ease;
+  user-select: none;
 }
 .item-container.active {
   display: flex;

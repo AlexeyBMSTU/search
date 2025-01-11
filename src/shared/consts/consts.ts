@@ -1,3 +1,5 @@
+import { isMobile } from 'react-device-detect';
+
 const paths = {
   GENERAL_PAGE: '/',
 };
@@ -20,5 +22,17 @@ const itemDescription: any = {
   5: 'Новости',
 };
 
-const durationRotate = 100;
-export { paths, itemAngles, durationRotate, itemDescription };
+const durationRotate = isMobile ? 0 : 1;
+
+const itemsCount = Object.keys(itemDescription).length;
+
+const items = Object.keys(itemAngles);
+
+export {
+  paths,
+  itemAngles,
+  durationRotate,
+  itemDescription,
+  itemsCount,
+  items,
+};

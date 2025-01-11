@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './styles.scss';
-import { itemAngles, itemDescription } from '@/shared/consts/consts';
+import { itemDescription } from '@/shared/consts/consts';
 
 const Item = React.forwardRef(
   (
@@ -12,18 +12,9 @@ const Item = React.forwardRef(
       onMouseLeave,
       hoverIndex,
       animationComplete,
-      rotate,
     }: any,
     ref: any,
   ) => {
-    const hover = (
-      <div
-        style={{ transform: `rotate(${itemAngles[`Item ${index + 1}`]}deg)` }}
-      >
-        {index + 1}{' '}
-      </div>
-    );
-    const active = <div>{index + 1}</div>;
     const showText = (
       <div style={{ opacity: '1' }} className='item-title'>
         {itemDescription[index]}
@@ -35,14 +26,14 @@ const Item = React.forwardRef(
       </div>
     );
     return (
-      <div className='item' ref={ref}>
+      <div id={index} className='item' ref={ref}>
         <div
           className={`item-container ${isActive ? 'active' : ''}`}
           onClick={() => onClick(index)}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
         >
-          {hoverIndex ? active : ''} {isActive ? active : ''}{' '}
+          {hoverIndex || isActive ? <div>{index + 1}</div> : <></>}
         </div>
         {isActive && animationComplete ? showText : hideText}
       </div>
