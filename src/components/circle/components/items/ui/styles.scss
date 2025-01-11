@@ -1,0 +1,57 @@
+.item {
+  position: absolute;
+  text-align: center;
+  // width: 128px;
+  height: 56px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Позиционирование элементов на окружности */
+.item:nth-child(1) {
+  transform: rotate(0deg) translate(265px) rotate(0deg);
+}
+.item:nth-child(2) {
+  transform: rotate(60deg) translate(265px) rotate(-60deg);
+}
+.item:nth-child(3) {
+  transform: rotate(120deg) translate(265px) rotate(-120deg);
+}
+.item:nth-child(4) {
+  transform: rotate(180deg) translate(265px) rotate(-180deg);
+}
+.item:nth-child(5) {
+  transform: rotate(240deg) translate(265px) rotate(-240deg);
+}
+.item:nth-child(6) {
+  transform: rotate(300deg) translate(265px) rotate(-300deg);
+}
+
+.item-container {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--background-color-item);
+  transition:
+    scale var(--time) ease,
+    width var(--time) ease,
+    height var(--time) ease;
+}
+.item-container:hover {
+  cursor: pointer;
+  scale: 1.5;
+}
+.item-title {
+  position: absolute;
+  margin-left: 76px;
+  font-weight: 700;
+  color: var(--item-active-text-color);
+}
+.item-container.active {
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--item-active-line-color);
+  background-color: var(--background-color);
+}

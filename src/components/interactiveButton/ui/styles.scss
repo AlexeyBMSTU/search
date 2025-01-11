@@ -1,0 +1,30 @@
+.event__prev-button,
+.event__next-button {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  color: var(--mobile-color);
+  font-weight: bold;
+}
+.event__prev-button {
+  left: 0;
+}
+.event__next-button {
+  right: 0;
+}
+.next-button,
+.prev-button {
+  background-size: cover;
+  border-radius: 50%;
+}
+.prev-button {
+  transform: rotate(-180deg);
+}

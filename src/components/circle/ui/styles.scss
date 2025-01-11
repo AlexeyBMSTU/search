@@ -1,0 +1,19 @@
+.circle {
+  position: relative;
+  width: 530px; /* Ширина круга */
+  height: 530px; /* Высота круга */
+  border: 1px solid var(--circle-line-color); /* Граница круга */
+  border-radius: 50%; /* Закругление для круга */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.science {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

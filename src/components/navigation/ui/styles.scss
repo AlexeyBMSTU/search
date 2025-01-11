@@ -1,0 +1,18 @@
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.navigation.mobile {
+  height: 49.67px;
+  width: 58.33px;
+}
+.navigation.desktop {
+  height: 88px;
+  width: 120px;
+}
+.navigation span {
+  font-size: 14px;
+  color: #3a4a5a;
+}

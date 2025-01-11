@@ -1,15 +1,18 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: './src/index.tsx',
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
-    publicPath: "/",
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+    publicPath: '/',
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx"],
+    alias: {
+      '@': path.resolve(__dirname, 'src/'),
+    },
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   module: {
     rules: [
@@ -17,26 +20,26 @@ module.exports = {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "ts-loader",
+          loader: 'ts-loader',
         },
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.s[ac]ss$/i,
         use: [
           MiniCssExtractPlugin.loader, // Извлечение CSS в отдельный файл
-          "css-loader", // Переводит CSS в CommonJS
-          "sass-loader", // Компилирует Sass в CSS
+          'css-loader', // Переводит CSS в CommonJS
+          'sass-loader', // Компилирует Sass в CSS
         ],
       },
     ],
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, "dist"),
+      directory: path.join(__dirname, 'dist'),
     },
     compress: true,
     port: 9000,
@@ -45,12 +48,12 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
+      template: './src/index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].css", // Имя выходного файла CSS
-      chunkFilename: "[id].css",
+      filename: '[name].css', // Имя выходного файла CSS
+      chunkFilename: '[id].css',
     }),
   ],
-  mode: "development",
+  mode: 'development',
 };
