@@ -9,6 +9,7 @@ const Item = ({
   onMouseEnter,
   onMouseLeave,
   hoverIndex,
+  animationComplete,
 }: any) => {
   const hover = (
     <div style={{ transform: `rotate(${itemAngles[`Item ${index + 1}`]}deg)` }}>
@@ -16,6 +17,16 @@ const Item = ({
     </div>
   );
   const active = <div>{index + 1}</div>;
+  const showText = (
+    <div style={{ opacity: '1' }} className='item-title'>
+      {itemDescription[index]}
+    </div>
+  );
+  const hideText = (
+    <div style={{ opacity: '0' }} className='item-title'>
+      {itemDescription[index]}
+    </div>
+  );
   return (
     <div className='item'>
       <div
@@ -26,11 +37,7 @@ const Item = ({
       >
         {hoverIndex ? hover : ''} {isActive ? active : ''}{' '}
       </div>
-      {isActive ? (
-        <div className='item-title'>{itemDescription[index]}</div>
-      ) : (
-        <></>
-      )}
+      {isActive && animationComplete ? showText : hideText}
     </div>
   );
 };

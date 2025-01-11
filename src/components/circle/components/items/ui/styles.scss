@@ -57,6 +57,7 @@
   margin-left: 76px;
   font-weight: 700;
   color: var(--item-active-text-color);
+  transition: opacity var(--time) ease;
 }
 .item-container.active {
   display: flex;

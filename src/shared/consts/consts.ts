@@ -20,5 +20,5 @@ const itemDescription: any = {
   5: 'Новости',
 };
 
-const durationRotate = 1;
+const durationRotate = 2;
 export { paths, itemAngles, durationRotate, itemDescription };

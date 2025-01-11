@@ -8,11 +8,14 @@ import updateAngle from '@/shared/updateAngle/updateAngle';
 const Circle = () => {
   const [rotation, setRotation] = useState(0);
   const circleRef = useRef(null);
+  const itemRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(5);
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
+  const [isAnimationComplete, setIsAnimationComplete] = useState(true);
 
   const handleClickItem = (index: number) => {
     if (activeIndex === index) return;
+    setIsAnimationComplete(false);
 
     setActiveIndex(index);
     const targetRotation = itemAngles[`Item ${index + 1}`];
@@ -29,6 +32,11 @@ const Circle = () => {
     gsap.to(circleRef.current, {
       rotation: newRotation,
       duration: durationRotate,
+      onComplete: () => setIsAnimationComplete(true),
+    });
+    gsap.to(itemRef.current, {
+      rotation: -newRotation,
+      duration: durationRotate,
     });
 
     setRotation(newRotation);
@@ -43,6 +51,7 @@ const Circle = () => {
       <div className='science'>
         {items.map((item, index) => (
           <Item
+            ref={activeIndex === index ? itemRef : ''}
             key={index}
             index={index}
             isActive={activeIndex === index}
@@ -54,6 +63,7 @@ const Circle = () => {
               }
             }}
             onMouseLeave={() => setHoverIndex(null)}
+            animationComplete={isAnimationComplete}
           >
             {item}
           </Item>
