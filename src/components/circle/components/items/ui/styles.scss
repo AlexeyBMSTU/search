@@ -37,10 +37,20 @@
     scale var(--time) ease,
     width var(--time) ease,
     height var(--time) ease;
+  cursor: pointer;
 }
 .item-container:hover {
-  cursor: pointer;
-  scale: 1.5;
+  // cursor: pointer;
+  // scale: 1.5;
+  display: flex;
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--item-active-line-color);
+  background-color: var(--background-color);
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .item-title {
   position: absolute;
@@ -49,10 +59,15 @@
   color: var(--item-active-text-color);
 }
 .item-container.active {
+  display: flex;
   width: 56px;
   height: 56px;
   border: 1px solid var(--item-active-line-color);
   background-color: var(--background-color);
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .item.active {
   transform: rotate(360deg); /* Вращение при активации */

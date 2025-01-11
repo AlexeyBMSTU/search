@@ -11,4 +11,14 @@ const itemAngles: any = {
   'Item 6': 0,
 };
 
-export { paths, itemAngles };
+const itemDescription: any = {
+  0: 'Наука',
+  1: 'Образование',
+  2: 'Медицина',
+  3: 'Бизнес',
+  4: 'Государство',
+  5: 'Новости',
+};
+
+const durationRotate = 1;
+export { paths, itemAngles, durationRotate, itemDescription };
