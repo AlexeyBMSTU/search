@@ -6,23 +6,24 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  transform-origin: center center;
 }
 
 /* Позиционирование элементов на окружности */
 .item:nth-child(1) {
-  transform: rotate(0deg) translate(265px) rotate(-300deg);
+  transform: rotate(0deg) translate(265px) rotate(0deg);
 }
 .item:nth-child(2) {
-  transform: rotate(60deg) translate(265px) rotate(-300deg);
+  transform: rotate(60deg) translate(265px) rotate(-60deg);
 }
 .item:nth-child(3) {
-  transform: rotate(120deg) translate(265px) rotate(-300deg);
+  transform: rotate(120deg) translate(265px) rotate(-120deg);
 }
 .item:nth-child(4) {
-  transform: rotate(180deg) translate(265px) rotate(-300deg);
+  transform: rotate(180deg) translate(265px) rotate(-180deg);
 }
 .item:nth-child(5) {
-  transform: rotate(240deg) translate(265px) rotate(-300deg);
+  transform: rotate(240deg) translate(265px) rotate(-240deg);
 }
 .item:nth-child(6) {
   transform: rotate(300deg) translate(265px) rotate(-300deg);
@@ -38,6 +39,7 @@
     width var(--time) ease,
     height var(--time) ease;
   cursor: pointer;
+  transform-origin: center;
 }
 .item-container:hover {
   // cursor: pointer;
