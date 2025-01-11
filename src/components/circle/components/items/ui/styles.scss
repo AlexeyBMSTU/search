@@ -34,7 +34,10 @@
   height: 6px;
   border-radius: 50%;
   background-color: var(--background-color-item);
-  transition: scale var(--time) ease;
+  transition:
+    scale var(--time) ease,
+    width var(--time) ease,
+    height var(--time) ease;
 }
 .item-container:hover {
   cursor: pointer;
@@ -44,6 +47,7 @@
   position: absolute;
   margin-left: 76px;
   font-weight: 700;
+  color: var(--item-active-text-color);
 }
 .item-container.active {
   width: 56px;

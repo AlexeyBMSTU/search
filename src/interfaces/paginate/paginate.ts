@@ -1,0 +1,3 @@
+interface PaginateItemProps {
+  isActive?: boolean;
+}

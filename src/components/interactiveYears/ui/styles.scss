@@ -1,0 +1,18 @@
+.years {
+  width: 273px;
+  height: 73px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-content: center;
+  flex-direction: row;
+  font-size: 56px;
+  user-select: none;
+}
+.years.desktop {
+  font-size: 200px;
+  position: absolute;
+  width: 973px;
+  height: 160px;
+}
