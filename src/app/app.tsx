@@ -1,7 +1,7 @@
 import React from 'react';
 import Home from '@/pages/home';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import paths from '@/shared/consts/consts';
+import { paths } from '@/shared/consts/consts';
 
 const App = () => {
   return (

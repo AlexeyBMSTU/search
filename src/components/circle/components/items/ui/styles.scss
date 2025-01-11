@@ -1,7 +1,6 @@
 .item {
   position: absolute;
   text-align: center;
-  // width: 128px;
   height: 56px;
   display: flex;
   flex-direction: row;
@@ -11,19 +10,19 @@
 
 /* Позиционирование элементов на окружности */
 .item:nth-child(1) {
-  transform: rotate(0deg) translate(265px) rotate(0deg);
+  transform: rotate(0deg) translate(265px) rotate(-300deg);
 }
 .item:nth-child(2) {
-  transform: rotate(60deg) translate(265px) rotate(-60deg);
+  transform: rotate(60deg) translate(265px) rotate(-300deg);
 }
 .item:nth-child(3) {
-  transform: rotate(120deg) translate(265px) rotate(-120deg);
+  transform: rotate(120deg) translate(265px) rotate(-300deg);
 }
 .item:nth-child(4) {
-  transform: rotate(180deg) translate(265px) rotate(-180deg);
+  transform: rotate(180deg) translate(265px) rotate(-300deg);
 }
 .item:nth-child(5) {
-  transform: rotate(240deg) translate(265px) rotate(-240deg);
+  transform: rotate(240deg) translate(265px) rotate(-300deg);
 }
 .item:nth-child(6) {
   transform: rotate(300deg) translate(265px) rotate(-300deg);
@@ -54,4 +53,7 @@
   height: 56px;
   border: 1px solid var(--item-active-line-color);
   background-color: var(--background-color);
+}
+.item.active {
+  transform: rotate(360deg); /* Вращение при активации */
 }

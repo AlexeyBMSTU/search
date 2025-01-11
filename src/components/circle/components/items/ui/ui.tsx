@@ -8,7 +8,7 @@ const Item = ({ index, isActive, onClick }: any) => {
         className={`item-container ${isActive ? 'active' : ''}`}
         onClick={() => onClick(index)}
       ></div>
-      <div className='item-title'>Ноябрь</div>
+      {isActive ? <div className='item-title'>{index + 1}Ноябрь</div> : <></>}
     </div>
   );
 };
