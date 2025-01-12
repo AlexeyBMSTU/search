@@ -1,3 +1,4 @@
+import { ageIntervals } from '@/shared/consts/consts';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface CircleState {
@@ -12,6 +13,16 @@ const initialState: CircleState = {
   rotation: 0,
   isAnimationComplete: true,
   currentIndex: '06',
+};
+
+interface IntervalState {
+  startInterval: { first: number; second: number };
+  endInterval: { first: number; second: number };
+}
+
+const initialIntervalState: IntervalState = {
+  startInterval: ageIntervals[5],
+  endInterval: ageIntervals[5],
 };
 
 const circleSlice = createSlice({
@@ -33,6 +44,19 @@ const circleSlice = createSlice({
   },
 });
 
+const dateIntervalSlice = createSlice({
+  name: 'interval',
+  initialState: initialIntervalState,
+  reducers: {
+    setActiveStartInterval(state, action: PayloadAction<any>) {
+      state.startInterval = action.payload;
+    },
+    setActiveEndInterval(state, action: PayloadAction<any>) {
+      state.endInterval = action.payload;
+    },
+  },
+});
+
 export const {
   setCurrentIndex,
   setActiveIndex,
@@ -40,3 +64,7 @@ export const {
   setAnimationComplete,
 } = circleSlice.actions;
 export default circleSlice.reducer; // Обратите внимание на .reducer
+
+export const { setActiveStartInterval, setActiveEndInterval } =
+  dateIntervalSlice.actions;
+export const dateIntervalReducer = dateIntervalSlice.reducer; // Обратите внимание на .reducer

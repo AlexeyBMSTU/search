@@ -11,6 +11,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css'; // Импортируйте стили Swiper
 import { Navigation, Pagination } from 'swiper/modules'; // Импортируйте модули
 import { Slider } from '@/components/fact';
+import { TitleTheme } from '@/components/titleTheme';
 
 const MobileHome = () => {
   return (
@@ -18,14 +19,13 @@ const MobileHome = () => {
       <Title resolution='mobile' />
       <div className='container-interactive mobile'>
         <PlaceYears resolution='mobile' />
+        <TitleTheme />
         <div className='line'></div>
         <div className='information-section mobile'>
-          {/* <Paginate /> */}
           <Navigate />
           <div className='interactive-info'>
             <Slider resolution='mobile' />
           </div>
-          {/* <Fact resolution='mobile' /> */}
         </div>
       </div>
     </div>

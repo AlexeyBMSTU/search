@@ -2,8 +2,12 @@ import React from 'react';
 import './styles.scss';
 import { isMobile } from 'react-device-detect';
 import { useSelector } from 'react-redux';
-import { itemsCount } from '@/shared/consts/consts';
-import { hdl } from '@/shared/handlerClick/handlerClick';
+import { ageIntervals, itemsCount } from '@/shared/consts/consts';
+import {
+  animateFirstNumber,
+  animateSecNumber,
+  hdl,
+} from '@/shared/handlerClick/handlerClick';
 
 const NavigationButtons = () => {
   const activeIndex = useSelector((state: any) => state.circle.activeIndex);
@@ -15,11 +19,37 @@ const NavigationButtons = () => {
     if (!isAnimationComplete) return;
     const newIndex = (activeIndex - 1 + itemsCount) % itemsCount;
     const circle: any = document.querySelector(`.circle`);
+    const intervals = {
+      start: {
+        first: ageIntervals[activeIndex + 1].first,
+        second: ageIntervals[activeIndex + 1].second,
+      },
+      end: {
+        first: ageIntervals[newIndex + 1].first,
+        second: ageIntervals[newIndex + 1].second,
+      },
+    };
     if (circle) {
       const items: any = document.querySelectorAll(`.item`);
-      handleClickItem(newIndex, circle, items);
+      handleClickItem(newIndex, intervals, circle, items);
+      animateFirstNumber(
+        ageIntervals[activeIndex + 1].first,
+        ageIntervals[newIndex + 1].first,
+      );
+      animateSecNumber(
+        ageIntervals[activeIndex + 1].second,
+        ageIntervals[newIndex + 1].second,
+      );
     } else {
-      handleClickItem(newIndex);
+      handleClickItem(newIndex, intervals);
+      animateFirstNumber(
+        ageIntervals[activeIndex + 1].first,
+        ageIntervals[newIndex + 1].first,
+      );
+      animateSecNumber(
+        ageIntervals[activeIndex + 1].second,
+        ageIntervals[newIndex + 1].second,
+      );
     }
   };
 
@@ -27,11 +57,37 @@ const NavigationButtons = () => {
     if (!isAnimationComplete) return;
     const newIndex = (activeIndex + 1) % itemsCount;
     const circle: any = document.querySelector(`.circle`);
+    const intervals = {
+      start: {
+        first: ageIntervals[activeIndex + 1].first,
+        second: ageIntervals[activeIndex + 1].second,
+      },
+      end: {
+        first: ageIntervals[newIndex + 1].first,
+        second: ageIntervals[newIndex + 1].second,
+      },
+    };
     if (circle) {
       const items: any = document.querySelectorAll(`.item`);
-      handleClickItem(newIndex, circle, items);
+      handleClickItem(newIndex, intervals, circle, items);
+      animateFirstNumber(
+        ageIntervals[activeIndex + 1].first,
+        ageIntervals[newIndex + 1].first,
+      );
+      animateSecNumber(
+        ageIntervals[activeIndex + 1].second,
+        ageIntervals[newIndex + 1].second,
+      );
     } else {
-      handleClickItem(newIndex);
+      handleClickItem(newIndex, intervals);
+      animateFirstNumber(
+        ageIntervals[activeIndex + 1].first,
+        ageIntervals[newIndex + 1].first,
+      );
+      animateSecNumber(
+        ageIntervals[activeIndex + 1].second,
+        ageIntervals[newIndex + 1].second,
+      );
     }
   };
 

@@ -346,7 +346,7 @@ const itemEvents: any = {
     },
   ],
 };
-const durationRotate = isMobile ? 0 : 1;
+const durationRotate = 1;
 
 const itemsCount = Object.keys(itemDescription).length;
 
