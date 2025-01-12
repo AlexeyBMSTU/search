@@ -1,3 +1,3 @@
-import Event from './ui/ui';
+import PlaceEvent from './ui/ui';
 
-export { Event };
+export { PlaceEvent };

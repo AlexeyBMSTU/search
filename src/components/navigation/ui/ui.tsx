@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { itemsCount } from '@/shared/consts/consts';
 import compareToString from '@/shared/compareToString/compare';
 
-const Navigation = () => {
+const Navigate = () => {
   const activeIndex = useSelector((state: any) => state.circle.currentIndex);
   const allCount = compareToString(itemsCount);
   return (
@@ -19,4 +19,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default Navigate;

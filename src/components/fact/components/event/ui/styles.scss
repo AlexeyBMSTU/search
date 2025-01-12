@@ -1,14 +1,19 @@
 @media (max-width: 768px) {
   .event {
     width: 260px;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
   }
+}
+.event.mobile {
+  width: 260px;
+  height: 270px;
 }
 .event {
   text-align: left;
 }
 .event.desktop {
   width: 320px;
+  height: 210px;
 }
 .event h3 {
   font-size: 1.2em;

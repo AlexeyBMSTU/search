@@ -6,3 +6,8 @@
   overflow-x: auto;
   width: 95%;
 }
+@media (min-width: 768px) {
+  .interactive-info {
+    height: 268px;
+  }
+}

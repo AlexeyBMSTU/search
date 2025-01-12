@@ -7,6 +7,9 @@
 .navigation.mobile {
   height: 49.67px;
   width: 58.33px;
+  bottom: 2%;
+  position: absolute;
+  z-index: 2;
 }
 .navigation.desktop {
   height: 88px;

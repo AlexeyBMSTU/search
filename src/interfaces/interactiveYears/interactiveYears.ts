@@ -3,3 +3,7 @@ interface InteractiveYears {
   firstYear: string;
   secondYear: string;
 }
+
+interface PlaceYears {
+  resolution: string;
+}

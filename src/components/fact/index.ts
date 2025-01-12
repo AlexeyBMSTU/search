@@ -1,3 +1,3 @@
-import Fact from './ui/ui';
+import Slider from './ui/ui';
 
-export { Fact };
+export { Slider };
