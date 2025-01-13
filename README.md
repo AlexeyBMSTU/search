@@ -18,5 +18,5 @@
 
 ### **Для запуска необходимо:**
 ```
-npm i npm run start
+git clone https://github.com/AlexeyBMSTU/search && cd search/ && npm i && npm run start
 ```
