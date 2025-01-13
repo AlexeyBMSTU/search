@@ -13,6 +13,7 @@
 | Библиотеки            | React, Swiper, GSAP |
 | Стейт-менеджер        | Redux               |
 | Сборщик               | Webpack             |
+| Минификация           | TerserWebpackPlugin |
 | Линтер                | ESLint, Prettier    |
 | Препроцессоры         | SCSS                |
 
