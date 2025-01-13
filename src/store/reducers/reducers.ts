@@ -4,6 +4,9 @@ import {
   initialState,
 } from '@/store/initialState/initialState';
 
+/**
+ * Редюсер слайсов для круга с определенной логикой
+ */
 const circleSlice = createSlice({
   name: 'circle',
   initialState,
@@ -23,6 +26,9 @@ const circleSlice = createSlice({
   },
 });
 
+/**
+ * Редюсер слайсов для интервала с определенной логикой
+ */
 const dateIntervalSlice = createSlice({
   name: 'interval',
   initialState: initialIntervalState,

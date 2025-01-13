@@ -14,6 +14,11 @@ import {
 import { PlaceEvent } from '../components/event';
 import generateDATAKey from '@/shared/generateKey/generateKey';
 
+/**
+ * Компонент слайдера
+ * @param resolution Разрешение
+ * @returns
+ */
 const Slider: React.FC<Resolution> = ({ resolution }) => {
   const activeIndex = useSelector(
     (state: CircleProps) => state.circle.activeIndex,

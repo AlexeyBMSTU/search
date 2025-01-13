@@ -4,6 +4,10 @@ import { useSelector } from 'react-redux';
 import generateDATAKey from '@/shared/generateKey/generateKey';
 import { DATA } from '@/shared/consts/consts';
 
+/**
+ * Компонент названия темы. Для мобильной версии
+ * @returns
+ */
 const TitleTheme: React.FC = () => {
   const activeIndex = useSelector(
     (state: CircleProps) => state.circle.activeIndex,

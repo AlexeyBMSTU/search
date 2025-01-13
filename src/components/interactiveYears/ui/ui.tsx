@@ -5,6 +5,11 @@ import { useSelector } from 'react-redux';
 import generateDATAKey from '@/shared/generateKey/generateKey';
 import { DATA } from '@/shared/consts/consts';
 
+/**
+ * Компонент площадки для компонента годов
+ * @param resolution Разрешение
+ * @returns
+ */
 const PlaceYears: React.FC<PlaceYears> = ({ resolution }) => {
   const activeIndex = useSelector(
     (state: CircleProps) => state.circle.activeIndex,

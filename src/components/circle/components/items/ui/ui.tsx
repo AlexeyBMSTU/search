@@ -3,6 +3,16 @@ import './styles.scss';
 import generateDATAKey from '@/shared/generateKey/generateKey';
 import { DATA } from '@/shared/consts/consts';
 
+/**
+ * Компонент элемента круга
+ * @param index Текущий индекс активной вкладки
+ * @param isActive Флаг проверки активности вкладки
+ * @param onClick Колбек на клик
+ * @param onMouseEnter Событие onMouseEnter
+ * @param onMouseLeave Событие onMouseLeave
+ * @param hoverIndex Текущий индекс вкладки, на которую навелись
+ * @param animationComplete Флаг проверки окончания анимации показа/скрытия текста при наведении
+ */
 const Item = React.forwardRef(
   (
     {

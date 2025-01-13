@@ -4,9 +4,15 @@ import { isMobile } from 'react-device-detect';
 import { useSelector } from 'react-redux';
 import { DATA, ITEMS_COUNT } from '@/shared/consts/consts';
 import hdl from '@/shared/handlerClick/handlerClick';
-import animateNumber from '@/shared/animations/animations';
+import { animateNumber } from '@/shared/animations/animations';
 import generateDATAKey from '@/shared/generateKey/generateKey';
 
+/**
+ * Компонент навигации на странице.
+ *
+ * Отвечает за изменение тем, анимации годов в завимости от темы
+ * @returns
+ */
 const NavigationButtons: React.FC = () => {
   const activeIndex = useSelector(
     (state: CircleProps) => state.circle.activeIndex,
@@ -15,6 +21,10 @@ const NavigationButtons: React.FC = () => {
     (state: CircleProps) => state.circle.isAnimationComplete,
   );
   const [, , , , , handleClickItem] = hdl();
+
+  const disabledFlagNextButton = activeIndex === 0;
+
+  const disabledFlagPrevButton = activeIndex === ITEMS_COUNT - 1;
 
   const handleNavigation = (direction: number) => {
     if (!isAnimationComplete) return;
@@ -31,7 +41,7 @@ const NavigationButtons: React.FC = () => {
     if (circle || items) {
       handleClickItem(newIndex, circle, items);
     }
-    
+
     animateNumber(
       '.year-first',
       DATA[startKey].AGE_INTERVAL.FIRST,
@@ -47,18 +57,18 @@ const NavigationButtons: React.FC = () => {
   return (
     <div className='navigation-buttons'>
       <button
-        className={`navigation-buttons__button ${isMobile ? 'mobile' : 'desktop'}`}
+        className={`navigation-buttons__button prev-button ${isMobile ? 'mobile' : 'desktop'} ${disabledFlagNextButton ? 'disabled' : ''} `}
         onClick={() => handleNavigation(-1)}
-        disabled={activeIndex === 0 || !isAnimationComplete}
+        disabled={disabledFlagNextButton}
       >
-        &lt;
+        {/* &lt; */}
       </button>
       <button
-        className={`navigation-buttons__button ${isMobile ? 'mobile' : 'desktop'}`}
+        className={`navigation-buttons__button next-button ${isMobile ? 'mobile' : 'desktop'} ${disabledFlagPrevButton ? 'disabled' : ''}`}
         onClick={() => handleNavigation(1)}
-        disabled={activeIndex === ITEMS_COUNT - 1 || !isAnimationComplete}
+        disabled={disabledFlagPrevButton}
       >
-        &gt;
+        {/* &gt; */}
       </button>
     </div>
   );

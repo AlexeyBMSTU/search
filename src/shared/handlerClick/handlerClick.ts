@@ -8,14 +8,26 @@ import { gsap } from 'gsap';
 import { useEffect, useRef, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import { useDispatch, useSelector } from 'react-redux';
-import compareToString from '../compareToString/compare';
-import { DATA, DURATION_ROTATE } from '../consts/consts';
-import updateAngle from '../updateAngle/updateAngle';
-import generateDATAKey from '../generateKey/generateKey';
+import compareToString from '@/shared/compareToString/compare';
+import { DATA, DURATION_ROTATE } from '@/shared/consts/consts';
+import updateAngle from '@/shared/updateAngle/updateAngle';
+import generateDATAKey from '@/shared/generateKey/generateKey';
+import { animateObjects } from '@/shared/animations/animations';
 
-const hdl = () => {
+/**
+ * Хук для управления анимацией и состоянием круга
+ * @returns @param circleRef Ссылка на текущий круг
+ * @returns @param itemRefs Ссылка на текущие элементы на круге
+ * @returns @param activeIndex Активный индекс
+ * @returns @param hoverIndex Индекс элемента круга с эффектом "hover"
+ * @returns @param isAnimationComplete Флаг окончания всех анимаций на странице
+ * @returns @param handleClickItem Хендлер для клика по элементу
+ * @returns @param setHoverIndex Сеттер текущего индекса в эффект "hover"
+ */
+const useHendler = () => {
   const circleRef = useRef<HTMLDivElement | null>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+
   const activeIndex = useSelector(
     (state: CircleProps) => state.circle.activeIndex,
   );
@@ -23,25 +35,11 @@ const hdl = () => {
   const isAnimationComplete = useSelector(
     (state: CircleProps) => state.circle.isAnimationComplete,
   );
+
   const dispatch = useDispatch();
+
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
-
-  const animateObjects = () => {
-    const informations = document.querySelectorAll('.event');
-    const titleTheme = document.querySelector(`.theme`);
-    const line = document.querySelector(`.line`);
-    if (!informations || !titleTheme || !line) return;
-    const objects = [informations, titleTheme, line];
-
-    objects.forEach((object) => {
-      gsap.fromTo(
-        object,
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: DURATION_ROTATE },
-      );
-    });
-  };
 
   useEffect(() => {
     if (isVisible && isMobile) {
@@ -106,4 +104,4 @@ const hdl = () => {
   ] as const;
 };
 
-export default hdl;
+export default useHendler;
