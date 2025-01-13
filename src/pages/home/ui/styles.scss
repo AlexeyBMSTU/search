@@ -43,6 +43,16 @@
   position: relative;
 }
 
-.swiper {
-  user-select: none;
+.interactive-info {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  overflow-x: auto;
+  width: 95%;
+}
+@media (min-width: 768px) {
+  .interactive-info {
+    height: 268px;
+  }
 }

@@ -3,22 +3,25 @@ import {
   setAnimationComplete,
   setCurrentIndex,
   setRotation,
-} from '@/store/reducers';
+} from '@/store/reducers/reducers';
+import { gsap } from 'gsap';
 import { useEffect, useRef, useState } from 'react';
+import { isMobile } from 'react-device-detect';
 import { useDispatch, useSelector } from 'react-redux';
 import compareToString from '../compareToString/compare';
-import { durationRotate, itemAngles } from '../consts/consts';
+import { DATA, DURATION_ROTATE } from '../consts/consts';
 import updateAngle from '../updateAngle/updateAngle';
-import { gsap } from 'gsap';
-import { isMobile } from 'react-device-detect';
+import generateDATAKey from '../generateKey/generateKey';
 
-export const hdl = () => {
+const hdl = () => {
   const circleRef = useRef<HTMLDivElement | null>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const activeIndex = useSelector((state: any) => state.circle.activeIndex);
-  const rotation = useSelector((state: any) => state.circle.rotation);
+  const activeIndex = useSelector(
+    (state: CircleProps) => state.circle.activeIndex,
+  );
+  const rotation = useSelector((state: CircleProps) => state.circle.rotation);
   const isAnimationComplete = useSelector(
-    (state: any) => state.circle.isAnimationComplete,
+    (state: CircleProps) => state.circle.isAnimationComplete,
   );
   const dispatch = useDispatch();
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
@@ -35,7 +38,7 @@ export const hdl = () => {
       gsap.fromTo(
         object,
         { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: durationRotate },
+        { y: 0, opacity: 1, duration: DURATION_ROTATE },
       );
     });
   };
@@ -46,7 +49,11 @@ export const hdl = () => {
     }
   }, [isVisible]);
 
-  const handleClickItem = (index: number, circle?: any, items?: any) => {
+  const handleClickItem = (
+    index: number,
+    circle?: HTMLDivElement | null,
+    items?: any,
+  ): void => {
     if (activeIndex === index || !isAnimationComplete) return;
     dispatch(setAnimationComplete(false));
     dispatch(setActiveIndex(index));
@@ -55,28 +62,30 @@ export const hdl = () => {
     if (circle) circleRef.current = circle;
     if (items) itemRefs.current = items;
 
-    const targetRotation = itemAngles[`Item ${index + 1}`];
-    Object.keys(itemAngles).forEach((key) => {
-      itemAngles[key] -= targetRotation;
-      updateAngle(key);
+    const key = generateDATAKey(index);
+    const targetRotation = DATA[key].ANGLE;
+
+    Object.keys(DATA).forEach((key) => {
+      const typedKey = key as keyof typeof DATA;
+      DATA[typedKey].ANGLE -= targetRotation;
+      updateAngle(typedKey);
     });
 
     const newRotation = rotation + targetRotation;
     gsap.to(circleRef.current, {
       rotation: newRotation,
-      duration: durationRotate,
+      duration: DURATION_ROTATE,
       onComplete: () => {
         dispatch(setAnimationComplete(true));
-        console.log(circleRef.current);
         setIsVisible(false);
       },
     });
 
-    itemRefs.current.forEach((item: any) => {
+    itemRefs.current.forEach((item: HTMLDivElement | null) => {
       if (item) {
         gsap.to(item, {
           rotation: -newRotation,
-          duration: durationRotate,
+          duration: DURATION_ROTATE,
         });
       }
     });
@@ -94,5 +103,7 @@ export const hdl = () => {
     isAnimationComplete,
     handleClickItem,
     setHoverIndex,
-  ];
+  ] as const;
 };
+
+export default hdl;

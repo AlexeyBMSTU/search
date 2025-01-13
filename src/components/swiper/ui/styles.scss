@@ -37,6 +37,7 @@
 }
 .swiper {
   position: static !important;
+  user-select: none;
 }
 
 .swiper-pagination-bullet-active {

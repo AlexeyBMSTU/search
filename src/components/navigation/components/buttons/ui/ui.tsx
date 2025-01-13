@@ -2,34 +2,45 @@ import React from 'react';
 import './styles.scss';
 import { isMobile } from 'react-device-detect';
 import { useSelector } from 'react-redux';
-import { ageIntervals, itemsCount } from '@/shared/consts/consts';
-import { hdl } from '@/shared/handlerClick/handlerClick';
+import { DATA, ITEMS_COUNT } from '@/shared/consts/consts';
+import hdl from '@/shared/handlerClick/handlerClick';
 import animateNumber from '@/shared/animations/animations';
+import generateDATAKey from '@/shared/generateKey/generateKey';
 
-const NavigationButtons = () => {
-  const activeIndex = useSelector((state: any) => state.circle.activeIndex);
+const NavigationButtons: React.FC = () => {
+  const activeIndex = useSelector(
+    (state: CircleProps) => state.circle.activeIndex,
+  );
   const isAnimationComplete = useSelector(
-    (state: any) => state.circle.isAnimationComplete,
+    (state: CircleProps) => state.circle.isAnimationComplete,
   );
   const [, , , , , handleClickItem] = hdl();
 
-  const handleNavigation = (direction: any) => {
+  const handleNavigation = (direction: number) => {
     if (!isAnimationComplete) return;
 
-    const newIndex = (activeIndex + direction + itemsCount) % itemsCount;
-    const circle = document.querySelector('.circle');
-    const items = circle ? document.querySelectorAll('.item') : null;
+    const newIndex = (activeIndex + direction + ITEMS_COUNT) % ITEMS_COUNT;
 
-    handleClickItem(newIndex, circle, items);
+    const circle = document.querySelector('.circle') as HTMLDivElement;
+
+    const items = document.querySelectorAll('.item');
+
+    const startKey = generateDATAKey(activeIndex);
+    const endKey = generateDATAKey(newIndex);
+
+    if (circle || items) {
+      handleClickItem(newIndex, circle, items);
+    }
+    
     animateNumber(
       '.year-first',
-      ageIntervals[activeIndex + 1].first,
-      ageIntervals[newIndex + 1].first,
+      DATA[startKey].AGE_INTERVAL.FIRST,
+      DATA[endKey].AGE_INTERVAL.FIRST,
     );
     animateNumber(
       '.year-second',
-      ageIntervals[activeIndex + 1].first,
-      ageIntervals[newIndex + 1].first,
+      DATA[startKey].AGE_INTERVAL.SECOND,
+      DATA[endKey].AGE_INTERVAL.SECOND,
     );
   };
 
@@ -45,7 +56,7 @@ const NavigationButtons = () => {
       <button
         className={`navigation-buttons__button ${isMobile ? 'mobile' : 'desktop'}`}
         onClick={() => handleNavigation(1)}
-        disabled={activeIndex === itemsCount - 1 || !isAnimationComplete}
+        disabled={activeIndex === ITEMS_COUNT - 1 || !isAnimationComplete}
       >
         &gt;
       </button>

@@ -3,17 +3,13 @@ import './styles.scss';
 import { Circle } from '@/components/circle';
 import { Navigate } from '@/components/navigation';
 import { isMobile } from 'react-device-detect';
-import { Paginate } from '@/components/paginate';
-import { InteractiveButton } from '@/components/interactiveButton';
 import { PlaceYears } from '@/components/interactiveYears';
 import { Title } from '@/components/homeTitle';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.css'; // Импортируйте стили Swiper
-import { Navigation, Pagination } from 'swiper/modules'; // Импортируйте модули
-import { Slider } from '@/components/fact';
+import 'swiper/swiper-bundle.css';
+import { Slider } from '@/components/swiper';
 import { TitleTheme } from '@/components/titleTheme';
 
-const MobileHome = () => {
+const MobileHome: React.FC = () => {
   return (
     <div className='container mobile'>
       <Title resolution='mobile' />
@@ -31,7 +27,7 @@ const MobileHome = () => {
     </div>
   );
 };
-const DesktopHome = () => {
+const DesktopHome: React.FC = () => {
   return (
     <div className='container desktop'>
       <Title resolution='desktop' />
@@ -42,16 +38,13 @@ const DesktopHome = () => {
       <div className={'information-section desktop'}>
         <Navigate />
         <div className='interactive-info'>
-          {/* <InteractiveButton custom='prev' /> */}
-          {/* <Fact resolution='desktop' /> */}
           <Slider resolution='desktop' />
-          {/* <InteractiveButton custom='next' /> */}
         </div>
       </div>
     </div>
   );
 };
-const Home = () => {
+const Home: React.FC = () => {
   return <>{isMobile ? <MobileHome /> : <DesktopHome />}</>;
 };
 

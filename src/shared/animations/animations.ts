@@ -1,4 +1,4 @@
-import { durationRotate } from '../consts/consts';
+import { DURATION_ROTATE } from '../consts/consts';
 import { gsap } from 'gsap';
 
 const animateNumber = (selector: string, start: number, end: number) => {
@@ -7,7 +7,7 @@ const animateNumber = (selector: string, start: number, end: number) => {
     { value: start },
     {
       value: end,
-      duration: durationRotate,
+      duration: DURATION_ROTATE,
       onUpdate: function () {
         counter.innerText = Math.round(this.targets()[0].value);
       },

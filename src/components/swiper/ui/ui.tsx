@@ -5,24 +5,27 @@ import 'swiper/swiper-bundle.css';
 import { Navigation, Pagination } from 'swiper/modules';
 import { useSelector } from 'react-redux';
 import {
-  itemEvents,
-  maxSlideCountPerView,
-  maxSlideDistance,
-  navigationSlideFlag,
-  paginationSlideFlag,
+  DATA,
+  MAX_SLIDE_COUNT_PER_VIEW,
+  MAX_SLIDE_DISTANCE,
+  NAVIGATION_SLIDE_FLAG,
+  PAGINATION_SLIDE_FLAG,
 } from '@/shared/consts/consts';
 import { PlaceEvent } from '../components/event';
+import generateDATAKey from '@/shared/generateKey/generateKey';
 
 const Slider: React.FC<Resolution> = ({ resolution }) => {
-  const activeIndex = useSelector((state: any) => state.circle.activeIndex) + 1;
-  const currentEvents = itemEvents[activeIndex];
-  console.log(currentEvents);
+  const activeIndex = useSelector(
+    (state: CircleProps) => state.circle.activeIndex,
+  );
+  const key = generateDATAKey(activeIndex);
+  const currentEvents = DATA[key].EVENTS;
   return (
     <Swiper
-      spaceBetween={maxSlideDistance}
-      slidesPerView={maxSlideCountPerView}
-      navigation={navigationSlideFlag}
-      pagination={{ clickable: true, enabled: paginationSlideFlag }}
+      spaceBetween={MAX_SLIDE_DISTANCE}
+      slidesPerView={MAX_SLIDE_COUNT_PER_VIEW}
+      navigation={NAVIGATION_SLIDE_FLAG}
+      pagination={{ clickable: true, enabled: PAGINATION_SLIDE_FLAG }}
       modules={[Navigation, Pagination]}
       breakpoints={{
         640: {
@@ -38,11 +41,11 @@ const Slider: React.FC<Resolution> = ({ resolution }) => {
     >
       {currentEvents.length > 0 ? (
         currentEvents.map((event: any) => (
-          <SwiperSlide key={event.year}>
+          <SwiperSlide key={event.YEAR}>
             <PlaceEvent
               resolution={resolution}
-              year={event.year}
-              description={event.description}
+              year={event.YEAR}
+              description={event.DESCRIPTION}
             />
           </SwiperSlide>
         ))

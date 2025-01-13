@@ -1,8 +1,8 @@
-import { itemAngles } from '../consts/consts';
+import { DATA } from '../consts/consts';
 
-const updateAngle = (key: string) => {
-  if (itemAngles[key] < 0) {
-    itemAngles[key] += 360;
+const updateAngle = (key: keyof typeof DATA) => {
+  if (DATA[key].ANGLE < 0) {
+    DATA[key].ANGLE += 360;
   }
 };
 

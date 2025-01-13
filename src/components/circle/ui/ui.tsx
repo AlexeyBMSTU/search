@@ -1,10 +1,10 @@
 import React from 'react';
 import { Item } from '@/components/circle/components/items';
 import './styles.scss';
-import { itemAngles, items } from '@/shared/consts/consts';
-import { hdl } from '@/shared/handlerClick/handlerClick';
+import { ITEMS } from '@/shared/consts/consts';
+import hdl from '@/shared/handlerClick/handlerClick';
 
-const Circle = () => {
+const Circle: React.FC = () => {
   const [
     circleRef,
     itemRefs,
@@ -18,7 +18,7 @@ const Circle = () => {
   return (
     <div className='circle' ref={circleRef}>
       <div className='science'>
-        {items.map((item, index) => (
+        {ITEMS.map((_, index: number) => (
           <Item
             ref={(el: any) => (itemRefs.current[index] = el)}
             key={index}
@@ -33,9 +33,7 @@ const Circle = () => {
             }}
             onMouseLeave={() => setHoverIndex(null)}
             animationComplete={isAnimationComplete}
-          >
-            {item}
-          </Item>
+          ></Item>
         ))}
       </div>
     </div>

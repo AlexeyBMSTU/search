@@ -1,11 +1,15 @@
 import React from 'react';
 import './styles.scss';
 import { useSelector } from 'react-redux';
-import { itemDescription } from '@/shared/consts/consts';
+import generateDATAKey from '@/shared/generateKey/generateKey';
+import { DATA } from '@/shared/consts/consts';
 
-const TitleTheme = () => {
-  const activeIndex = useSelector((state: any) => state.circle.activeIndex);
-  const theme = itemDescription[activeIndex];
+const TitleTheme: React.FC = () => {
+  const activeIndex = useSelector(
+    (state: CircleProps) => state.circle.activeIndex,
+  );
+  const key = generateDATAKey(activeIndex);
+  const theme = DATA[key].TITLE;
   if (!theme) return;
   return <div className='theme'>{theme}</div>;
 };

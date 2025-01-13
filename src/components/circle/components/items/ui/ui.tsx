@@ -1,6 +1,7 @@
 import React from 'react';
 import './styles.scss';
-import { itemDescription } from '@/shared/consts/consts';
+import generateDATAKey from '@/shared/generateKey/generateKey';
+import { DATA } from '@/shared/consts/consts';
 
 const Item = React.forwardRef(
   (
@@ -15,14 +16,15 @@ const Item = React.forwardRef(
     }: any,
     ref: any,
   ) => {
+    const key = generateDATAKey(index);
     const showText = (
       <div style={{ opacity: '1' }} className='item-title'>
-        {itemDescription[index]}
+        {DATA[key].TITLE}
       </div>
     );
     const hideText = (
       <div style={{ opacity: '0' }} className='item-title'>
-        {itemDescription[index]}
+        {DATA[key].TITLE}
       </div>
     );
     return (

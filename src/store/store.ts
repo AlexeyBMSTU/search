@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import circleSlice, { dateIntervalReducer } from './reducers';
+import circleSlice, { dateIntervalReducer } from './reducers/reducers';
 
 const store = configureStore({
   reducer: {
