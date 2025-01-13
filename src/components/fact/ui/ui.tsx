@@ -22,8 +22,8 @@ const Slider: React.FC<Resolution> = ({ resolution }) => {
       spaceBetween={maxSlideDistance}
       slidesPerView={maxSlideCountPerView}
       navigation={navigationSlideFlag}
-      pagination={{ clickable: true, enabled: paginationSlideFlag }} // Включите пагинацию
-      modules={[Navigation, Pagination]} // Укажите используемые модули
+      pagination={{ clickable: true, enabled: paginationSlideFlag }}
+      modules={[Navigation, Pagination]}
       breakpoints={{
         640: {
           slidesPerView: 1,
@@ -39,8 +39,6 @@ const Slider: React.FC<Resolution> = ({ resolution }) => {
       {currentEvents.length > 0 ? (
         currentEvents.map((event: any) => (
           <SwiperSlide key={event.year}>
-            {' '}
-            {/* Добавьте уникальный ключ для каждого слайда */}
             <PlaceEvent
               resolution={resolution}
               year={event.year}
@@ -50,7 +48,7 @@ const Slider: React.FC<Resolution> = ({ resolution }) => {
         ))
       ) : (
         <SwiperSlide>
-          <div>Нет доступных событий</div> {/* Сообщение, если нет событий */}
+          <div>Нет доступных событий</div>
         </SwiperSlide>
       )}
     </Swiper>

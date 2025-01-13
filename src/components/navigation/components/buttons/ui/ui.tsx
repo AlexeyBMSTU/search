@@ -3,11 +3,8 @@ import './styles.scss';
 import { isMobile } from 'react-device-detect';
 import { useSelector } from 'react-redux';
 import { ageIntervals, itemsCount } from '@/shared/consts/consts';
-import {
-  animateFirstNumber,
-  animateSecNumber,
-  hdl,
-} from '@/shared/handlerClick/handlerClick';
+import { hdl } from '@/shared/handlerClick/handlerClick';
+import animateNumber from '@/shared/animations/animations';
 
 const NavigationButtons = () => {
   const activeIndex = useSelector((state: any) => state.circle.activeIndex);
@@ -15,101 +12,40 @@ const NavigationButtons = () => {
     (state: any) => state.circle.isAnimationComplete,
   );
   const [, , , , , handleClickItem] = hdl();
-  const handlePrevious = () => {
-    if (!isAnimationComplete) return;
-    const newIndex = (activeIndex - 1 + itemsCount) % itemsCount;
-    const circle: any = document.querySelector(`.circle`);
-    const intervals = {
-      start: {
-        first: ageIntervals[activeIndex + 1].first,
-        second: ageIntervals[activeIndex + 1].second,
-      },
-      end: {
-        first: ageIntervals[newIndex + 1].first,
-        second: ageIntervals[newIndex + 1].second,
-      },
-    };
-    if (circle) {
-      const items: any = document.querySelectorAll(`.item`);
-      handleClickItem(newIndex, intervals, circle, items);
-      animateFirstNumber(
-        ageIntervals[activeIndex + 1].first,
-        ageIntervals[newIndex + 1].first,
-      );
-      animateSecNumber(
-        ageIntervals[activeIndex + 1].second,
-        ageIntervals[newIndex + 1].second,
-      );
-    } else {
-      handleClickItem(newIndex, intervals);
-      animateFirstNumber(
-        ageIntervals[activeIndex + 1].first,
-        ageIntervals[newIndex + 1].first,
-      );
-      animateSecNumber(
-        ageIntervals[activeIndex + 1].second,
-        ageIntervals[newIndex + 1].second,
-      );
-    }
-  };
 
-  const handleNext = () => {
+  const handleNavigation = (direction: any) => {
     if (!isAnimationComplete) return;
-    const newIndex = (activeIndex + 1) % itemsCount;
-    const circle: any = document.querySelector(`.circle`);
-    const intervals = {
-      start: {
-        first: ageIntervals[activeIndex + 1].first,
-        second: ageIntervals[activeIndex + 1].second,
-      },
-      end: {
-        first: ageIntervals[newIndex + 1].first,
-        second: ageIntervals[newIndex + 1].second,
-      },
-    };
-    if (circle) {
-      const items: any = document.querySelectorAll(`.item`);
-      handleClickItem(newIndex, intervals, circle, items);
-      animateFirstNumber(
-        ageIntervals[activeIndex + 1].first,
-        ageIntervals[newIndex + 1].first,
-      );
-      animateSecNumber(
-        ageIntervals[activeIndex + 1].second,
-        ageIntervals[newIndex + 1].second,
-      );
-    } else {
-      handleClickItem(newIndex, intervals);
-      animateFirstNumber(
-        ageIntervals[activeIndex + 1].first,
-        ageIntervals[newIndex + 1].first,
-      );
-      animateSecNumber(
-        ageIntervals[activeIndex + 1].second,
-        ageIntervals[newIndex + 1].second,
-      );
-    }
+
+    const newIndex = (activeIndex + direction + itemsCount) % itemsCount;
+    const circle = document.querySelector('.circle');
+    const items = circle ? document.querySelectorAll('.item') : null;
+
+    handleClickItem(newIndex, circle, items);
+    animateNumber(
+      '.year-first',
+      ageIntervals[activeIndex + 1].first,
+      ageIntervals[newIndex + 1].first,
+    );
+    animateNumber(
+      '.year-second',
+      ageIntervals[activeIndex + 1].first,
+      ageIntervals[newIndex + 1].first,
+    );
   };
 
   return (
     <div className='navigation-buttons'>
       <button
-        className={
-          isMobile
-            ? 'navigation-buttons__button mobile'
-            : 'navigation-buttons__button desktop'
-        }
-        onClick={handlePrevious}
+        className={`navigation-buttons__button ${isMobile ? 'mobile' : 'desktop'}`}
+        onClick={() => handleNavigation(-1)}
+        disabled={activeIndex === 0 || !isAnimationComplete}
       >
         &lt;
       </button>
       <button
-        className={
-          isMobile
-            ? 'navigation-buttons__button mobile'
-            : 'navigation-buttons__button desktop'
-        }
-        onClick={handleNext}
+        className={`navigation-buttons__button ${isMobile ? 'mobile' : 'desktop'}`}
+        onClick={() => handleNavigation(1)}
+        disabled={activeIndex === itemsCount - 1 || !isAnimationComplete}
       >
         &gt;
       </button>

@@ -11,3 +11,34 @@
     height: 268px;
   }
 }
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-weight: 700;
+  font-size: 0.6em !important;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50%;
+  background-color: white;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  margin-top: 40px !important;
+}
+.swiper-button-prev {
+  margin-left: -80px;
+}
+.swiper-button-prev.swiper-button-disabled,
+.swiper-button-next.swiper-button-disabled {
+  opacity: 0 !important;
+}
+.swiper {
+  position: static !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--background-color-item) !important;
+}

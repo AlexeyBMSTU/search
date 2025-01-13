@@ -31,12 +31,6 @@
   border: 1px solid var(--gap-line-color);
 }
 
-// @media (max-width: 768px) {
-//   .container {
-//     margin-left: 6.25%;
-//   }
-// }
-
 .information-section.mobile {
   display: flex;
   flex-direction: column-reverse;
@@ -46,6 +40,7 @@
 .information-section.desktop {
   margin-top: -48px;
   margin-left: 78px;
+  position: relative;
 }
 
 .swiper {
