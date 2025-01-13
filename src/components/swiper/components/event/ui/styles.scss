@@ -1,0 +1,27 @@
+@media (max-width: 768px) {
+  .event {
+    width: 260px;
+    margin-bottom: 60px;
+  }
+}
+.event.mobile {
+  width: 260px;
+  height: 270px;
+}
+.event {
+  text-align: left;
+}
+.event.desktop {
+  width: 320px;
+  height: 210px;
+}
+.event h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: var(--event-text-color);
+}
+.event p {
+  color: #3a4a5a;
+  font-size: 1em;
+  line-height: 1.5;
+}

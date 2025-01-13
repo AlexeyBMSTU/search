@@ -1,12 +1,14 @@
 .item {
   position: absolute;
   text-align: center;
-  // width: 128px;
   height: 56px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  transform-origin: center center;
+  color: var(--item-active-text-color);
+  font-weight: 700;
 }
 
 /* Позиционирование элементов на окружности */
@@ -38,20 +40,37 @@
     scale var(--time) ease,
     width var(--time) ease,
     height var(--time) ease;
+  cursor: pointer;
+  transform-origin: center;
 }
 .item-container:hover {
-  cursor: pointer;
-  scale: 1.5;
-}
-.item-title {
-  position: absolute;
-  margin-left: 76px;
-  font-weight: 700;
-  color: var(--item-active-text-color);
-}
-.item-container.active {
+  display: flex;
   width: 56px;
   height: 56px;
   border: 1px solid var(--item-active-line-color);
   background-color: var(--background-color);
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.item-title {
+  position: absolute;
+  margin-left: 76px;
+  transition: opacity var(--time) ease;
+  user-select: none;
+}
+.item-container.active {
+  display: flex;
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--item-active-line-color);
+  background-color: var(--background-color);
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.item.active {
+  transform: rotate(360deg);
 }

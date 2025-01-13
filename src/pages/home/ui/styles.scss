@@ -1,9 +1,14 @@
 @use '@/static/styles/styles.scss';
 .container {
   text-align: center;
-  max-width: 1200px;
+  width: 100%;
   position: relative;
 }
+.container.mobile {
+  width: 93.75%;
+  height: 100vh;
+}
+
 .container.desktop {
   max-width: 1440px;
   margin: 170px 320px 0 320px;
@@ -18,29 +23,36 @@
   margin-top: 45px;
 }
 .container-interactive.mobile {
-  margin-top: 104px;
   display: flex;
   flex-direction: column;
 }
 .line {
   width: 280px;
   border: 1px solid var(--gap-line-color);
-  margin-top: 130px;
-}
-
-@media (max-width: 768px) {
-  .container {
-    margin-left: 20px;
-  }
 }
 
 .information-section.mobile {
   display: flex;
   flex-direction: column-reverse;
-  width: 100vw;
+  width: 100%;
 }
 
 .information-section.desktop {
   margin-top: -48px;
   margin-left: 78px;
+  position: relative;
+}
+
+.interactive-info {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  overflow-x: auto;
+  width: 95%;
+}
+@media (min-width: 768px) {
+  .interactive-info {
+    height: 268px;
+  }
 }

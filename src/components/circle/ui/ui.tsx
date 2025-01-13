@@ -1,22 +1,39 @@
-import React, { useState } from 'react';
-import { Item } from '../components/items';
+import React from 'react';
+import { Item } from '@/components/circle/components/items';
 import './styles.scss';
+import { ITEMS } from '@/shared/consts/consts';
+import hdl from '@/shared/handlerClick/handlerClick';
 
-const Circle = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
-  const handleClickItem = (index: any) => {
-    setActiveIndex(index);
-  };
+const Circle: React.FC = () => {
+  const [
+    circleRef,
+    itemRefs,
+    activeIndex,
+    hoverIndex,
+    isAnimationComplete,
+    handleClickItem,
+    setHoverIndex,
+  ] = hdl();
+
   return (
-    <div className='circle'>
+    <div className='circle' ref={circleRef}>
       <div className='science'>
-        {Array.from({ length: 6 }).map((_, index) => (
+        {ITEMS.map((_, index: number) => (
           <Item
+            ref={(el: any) => (itemRefs.current[index] = el)}
             key={index}
             index={index}
             isActive={activeIndex === index}
-            onClick={handleClickItem}
-          />
+            hoverIndex={hoverIndex === index && activeIndex !== index}
+            onClick={() => handleClickItem(index)}
+            onMouseEnter={() => {
+              if (activeIndex !== index) {
+                setHoverIndex(index);
+              }
+            }}
+            onMouseLeave={() => setHoverIndex(null)}
+            animationComplete={isAnimationComplete}
+          ></Item>
         ))}
       </div>
     </div>

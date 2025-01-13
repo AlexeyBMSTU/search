@@ -1,12 +1,13 @@
 .circle {
   position: relative;
-  width: 530px; /* Ширина круга */
-  height: 530px; /* Высота круга */
-  border: 1px solid var(--circle-line-color); /* Граница круга */
-  border-radius: 50%; /* Закругление для круга */
+  width: 530px;
+  height: 530px;
+  border: 1px solid var(--circle-line-color);
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 
 .science {

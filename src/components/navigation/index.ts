@@ -1,3 +1,3 @@
-import Navigation from './ui/ui';
+import Navigate from './ui/ui';
 
-export { Navigation };
+export { Navigate };

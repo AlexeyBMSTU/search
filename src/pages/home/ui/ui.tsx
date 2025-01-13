@@ -1,50 +1,50 @@
 import React from 'react';
 import './styles.scss';
 import { Circle } from '@/components/circle';
-import { Navigation } from '@/components/navigation';
+import { Navigate } from '@/components/navigation';
 import { isMobile } from 'react-device-detect';
-import { Paginate } from '@/components/paginate';
-import { Fact } from '@/components/fact';
-import { InteractiveButton } from '@/components/interactiveButton';
 import { PlaceYears } from '@/components/interactiveYears';
 import { Title } from '@/components/homeTitle';
+import 'swiper/swiper-bundle.css';
+import { Slider } from '@/components/swiper';
+import { TitleTheme } from '@/components/titleTheme';
 
-const MobileHome = () => {
+const MobileHome: React.FC = () => {
   return (
     <div className='container mobile'>
       <Title resolution='mobile' />
       <div className='container-interactive mobile'>
-        <PlaceYears resolution='mobile' firstYear='2015' secondYear='2022' />
+        <PlaceYears resolution='mobile' />
+        <TitleTheme />
         <div className='line'></div>
         <div className='information-section mobile'>
-          <Navigation />
-          <Paginate />
-          <Fact resolution='mobile' />
+          <Navigate />
+          <div className='interactive-info'>
+            <Slider resolution='mobile' />
+          </div>
         </div>
       </div>
     </div>
   );
 };
-const DesktopHome = () => {
+const DesktopHome: React.FC = () => {
   return (
     <div className='container desktop'>
       <Title resolution='desktop' />
       <div className='container-interactive desktop'>
-        <PlaceYears resolution='desktop' firstYear='2015' secondYear='2022' />
+        <PlaceYears resolution='desktop' />
         <Circle />
       </div>
       <div className={'information-section desktop'}>
-        <Navigation />
+        <Navigate />
         <div className='interactive-info'>
-          <InteractiveButton custom='prev' />
-          <Fact resolution='desktop' />
-          <InteractiveButton custom='next' />
+          <Slider resolution='desktop' />
         </div>
       </div>
     </div>
   );
 };
-const Home = () => {
+const Home: React.FC = () => {
   return <>{isMobile ? <MobileHome /> : <DesktopHome />}</>;
 };
 
