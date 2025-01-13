@@ -1,23 +1,42 @@
 .navigation-buttons__button {
+  color: rgba(66, 86, 122, 1);
   background: none;
-  border: 1px solid #d3d3d3;
+  border: 1px solid rgba(66, 86, 122, 0.5);
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  font-weight: 700;
   transition: background-color var(--time) ease;
 }
 .navigation-buttons__button.desktop {
   width: 50px;
   height: 50px;
 }
+.navigation-buttons__button::after {
+  font-family: swiper-icons;
+  text-transform: none !important;
+  letter-spacing: 0;
+  font-variant: initial;
+  line-height: 1;
+}
+.prev-button::after {
+  content: 'prev';
+}
+.next-button::after {
+  content: 'next';
+}
 .navigation-buttons__button.mobile {
   width: 25px;
   height: 25px;
 }
-.navigation-buttons__button:hover {
-  background-color: #e0e0e0;
+.navigation-buttons__button:hover,
+.navigation-buttons__button.disabled {
+  background-color: var(--hover-navigation-buttons);
+}
+.navigation-buttons__button.disabled {
+  opacity: 0.5;
 }
 .navigation-buttons {
   width: 100%;

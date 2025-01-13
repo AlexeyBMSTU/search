@@ -9,6 +9,10 @@ import 'swiper/swiper-bundle.css';
 import { Slider } from '@/components/swiper';
 import { TitleTheme } from '@/components/titleTheme';
 
+/**
+ * Компонент домашней страницы для мобильной версии
+ * @returns
+ */
 const MobileHome: React.FC = () => {
   return (
     <div className='container mobile'>
@@ -27,6 +31,11 @@ const MobileHome: React.FC = () => {
     </div>
   );
 };
+
+/**
+ * Компонент домашней страницы для десктопной версии
+ * @returns
+ */
 const DesktopHome: React.FC = () => {
   return (
     <div className='container desktop'>
@@ -44,6 +53,11 @@ const DesktopHome: React.FC = () => {
     </div>
   );
 };
+
+/**
+ * Компонент домашней страницы
+ * @returns
+ */
 const Home: React.FC = () => {
   return <>{isMobile ? <MobileHome /> : <DesktopHome />}</>;
 };

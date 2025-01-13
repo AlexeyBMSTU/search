@@ -4,6 +4,9 @@ import './styles.scss';
 import { ITEMS } from '@/shared/consts/consts';
 import hdl from '@/shared/handlerClick/handlerClick';
 
+/**
+ * Компонент круга
+ */
 const Circle: React.FC = () => {
   const [
     circleRef,

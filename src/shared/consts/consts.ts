@@ -1,9 +1,15 @@
 import { isMobile } from 'react-device-detect';
 
+/**
+ * Ссылки
+ */
 const PATHS = {
   GENERAL_PAGE: '/',
 };
 
+/**
+ * База данных
+ */
 const DATA = {
   'Item 1': {
     TITLE: 'Наука',
@@ -350,21 +356,45 @@ const DATA = {
   },
 };
 
+/**
+ * Скорость анимации - 1 секунда
+ */
 const DURATION_ROTATE = 1;
 
+/**
+ * Количество элементов в базе данных
+ */
 const ITEMS_COUNT = Object.keys(DATA).length;
 
+/**
+ * Все элементы в базе данных
+ */
+const ITEMS = Object.keys(DATA);
+
+/**
+ * Максимальное количество слайдов на экране. Для мобильной версии - 1, для декстопа - 3
+ */
 const MAX_SLIDE_COUNT_PER_VIEW = isMobile ? 1 : 3;
 
+/**
+ * Максимальное расстояние между слайдами. Для мобильной версии - 200 пикселей, для десктопа - 30 пикселей
+ */
 const MAX_SLIDE_DISTANCE = isMobile ? 200 : 30;
 
+/**
+ * Флаг навигации по слайдам. Стрелки влево и вправо. Для мобильной версии отлючено, для декстопа включено
+ */
 const NAVIGATION_SLIDE_FLAG = isMobile ? false : true;
 
+/**
+ * Флаг пагинации по слайдам. Для мобильной версии включено, для декстопа отключено
+ */
 const PAGINATION_SLIDE_FLAG = isMobile ? true : false;
 
+/**
+ * Домашнее название страницы
+ */
 const HOME_TITLE = 'Исторические даты';
-
-const ITEMS = Object.keys(DATA);
 
 export {
   PATHS,

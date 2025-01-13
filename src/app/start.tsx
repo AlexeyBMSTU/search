@@ -1,6 +1,11 @@
 import { createRoot } from 'react-dom/client';
 import React from 'react';
 import App from './app';
+
+/**
+ * Встаривание React в HTML
+ * @returns
+ */
 const start = async () => {
   const documentRender = document.getElementById('root');
 

@@ -1,3 +1,0 @@
-interface InteractiveClassButton {
-  custom: string;
-}

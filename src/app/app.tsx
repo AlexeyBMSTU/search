@@ -5,6 +5,10 @@ import { PATHS } from '@/shared/consts/consts';
 import { Provider } from 'react-redux';
 import store from '@/store/store';
 
+/**
+ * Старт приложения
+ * @returns
+ */
 const App = () => {
   return (
     <Provider store={store}>
