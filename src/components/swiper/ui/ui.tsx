@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './styles.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
@@ -25,6 +25,9 @@ const Slider: React.FC<Resolution> = ({ resolution }) => {
   );
   const key = generateDATAKey(activeIndex);
   const currentEvents = DATA[key].EVENTS;
+
+  const [isGrabbing, setIsGrabbing] = useState(false);
+
   return (
     <Swiper
       spaceBetween={MAX_SLIDE_DISTANCE}
@@ -43,6 +46,10 @@ const Slider: React.FC<Resolution> = ({ resolution }) => {
           slidesPerView: 3,
         },
       }}
+      onTouchStart={() => setIsGrabbing(true)}
+      onTouchEnd={() => setIsGrabbing(false)}
+      onTouchMove={() => setIsGrabbing(true)}
+      style={{ cursor: isGrabbing ? 'grabbing' : 'default' }}
     >
       {currentEvents.length > 0 ? (
         currentEvents.map((event: any) => (
@@ -62,4 +69,5 @@ const Slider: React.FC<Resolution> = ({ resolution }) => {
     </Swiper>
   );
 };
+
 export default Slider;
